@@ -31,3 +31,34 @@ export function reverseString(string) {
     throw new Error('not a string!');
   }
 }
+
+export const calculator = {
+  add(a, b) {
+    if (typeof a != 'number' || typeof b != 'number') {
+      throw new Error('Input have to be numbers!');
+    }
+    return a + b;
+  },
+  subtract(a, b) {
+    if (typeof a != 'number' || typeof b != 'number') {
+      throw new Error('Input have to be numbers!');
+    }
+    return a - b;
+  },
+  multiply(a, b) {
+    if (typeof a != 'number' || typeof b != 'number') {
+      throw new Error('Input have to be numbers!');
+    }
+    return a * b;
+  },
+  divide(a, b) {
+    if (typeof a != 'number' || typeof b != 'number') {
+      throw new Error('Input have to be numbers!');
+    }
+    if (b === 0) {
+      throw new Error("Can't divide by zero!");
+    } else {
+      return a / b;
+    }
+  },
+};

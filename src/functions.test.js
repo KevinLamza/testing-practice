@@ -2,6 +2,7 @@
 import { sum } from './functions.js';
 import { capitalize } from './functions.js';
 import { reverseString } from './functions.js';
+import { calculator } from './functions.js';
 
 test('adds 1 + 2 to equal 3', () => {
   expect(sum(1, 2)).toBe(3);
@@ -22,5 +23,18 @@ test('reverse', () => {
   expect(reverseString('apple')).toBe('elppa');
   expect(() => {
     reverseString(0);
+  }).toThrow();
+});
+
+test('calculator', () => {
+  expect(calculator.add(5, 1)).toBeCloseTo(6);
+  expect(calculator.subtract(5, 1)).toBeCloseTo(4);
+  expect(calculator.multiply(5, 1)).toBeCloseTo(5);
+  expect(calculator.divide(5, 2)).toBeCloseTo(2.5);
+  expect(() => {
+    calculator.add(test, 1);
+  }).toThrow();
+  expect(() => {
+    calculator.divide(5, 0);
   }).toThrow();
 });
