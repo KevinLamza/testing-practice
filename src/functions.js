@@ -118,4 +118,20 @@ export function caesarCipher(string, number) {
   }
 }
 
-caesarCipher('xyZ', 3);
+export function analyzeArray(array) {
+  for (let item of array) {
+    if (typeof item != 'number') throw new Error('Invalid input!');
+  }
+  const sum = array.reduce(
+    (accumulator, currentValue) => accumulator + currentValue,
+  );
+  const average = Math.round((sum / array.length) * 100) / 100;
+  const max = Math.max(...array);
+  const min = Math.min(...array);
+  return {
+    average: average,
+    min: min,
+    max: max,
+    length: array.length,
+  };
+}

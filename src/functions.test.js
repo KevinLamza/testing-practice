@@ -4,6 +4,7 @@ import { capitalize } from './functions.js';
 import { reverseString } from './functions.js';
 import { calculator } from './functions.js';
 import { caesarCipher } from './functions.js';
+import { analyzeArray } from './functions.js';
 
 test('adds 1 + 2 to equal 3', () => {
   expect(sum(1, 2)).toBe(3);
@@ -46,4 +47,28 @@ test('caesar cipher', () => {
   expect(caesarCipher('xyZ', 3)).toBe('abC');
   expect(caesarCipher('x.yZ', 3)).toBe('a.bC');
   expect(caesarCipher('x.y!!Z', 10)).toBe('h.i!!J');
+});
+
+test('analyze array', () => {
+  expect(analyzeArray([1, 2, 3, 4, 5])).toStrictEqual({
+    average: 3,
+    min: 1,
+    max: 5,
+    length: 5,
+  });
+  expect(analyzeArray([1, 2, 3, 4, 5, 6, 7])).toStrictEqual({
+    average: 4,
+    min: 1,
+    max: 7,
+    length: 7,
+  });
+  expect(analyzeArray([12, 2, 34, 4, 555, 6, -7])).toStrictEqual({
+    average: 86.57,
+    min: -7,
+    max: 555,
+    length: 7,
+  });
+  expect(() => {
+    analyzeArray([1, 2, 3, 't', 5]);
+  }).toThrow();
 });
