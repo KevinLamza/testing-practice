@@ -62,3 +62,52 @@ export const calculator = {
     }
   },
 };
+
+export function caesarCipher(string, number) {
+  if (typeof string === 'string' && typeof number === 'number') {
+    // prettier-ignore
+    let lowerAlphabet = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'];
+    // prettier-ignore
+    let upperAlphabet = ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'];
+    let array = string.split('');
+    let cipheredString = '';
+    for (let i = 0; i < array.length; i++) {
+      let character = array[i];
+      if (character == character.toUpperCase()) {
+        if (character === 'X') {
+          character = 'A';
+        } else if (character === 'Y') {
+          character = 'B';
+        } else if (character === 'Z') {
+          character = 'C';
+        } else {
+          let index = upperAlphabet.findIndex(
+            (element) => element === character,
+          );
+          if (index != -1) {
+            character = upperAlphabet[index + 3];
+          }
+        }
+      } else if (character == character.toLowerCase()) {
+        if (character === 'x') {
+          character = 'a';
+        } else if (character === 'y') {
+          character = 'b';
+        } else if (character === 'z') {
+          character = 'c';
+        } else {
+          let index = lowerAlphabet.findIndex(
+            (element) => element === character,
+          );
+          if (index != -1) {
+            character = lowerAlphabet[index + 3];
+          }
+        }
+      }
+      cipheredString = cipheredString + character;
+    }
+    return cipheredString;
+  } else {
+    throw new Error('Invalid input');
+  }
+}

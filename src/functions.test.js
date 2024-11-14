@@ -3,6 +3,7 @@ import { sum } from './functions.js';
 import { capitalize } from './functions.js';
 import { reverseString } from './functions.js';
 import { calculator } from './functions.js';
+import { caesarCipher } from './functions.js';
 
 test('adds 1 + 2 to equal 3', () => {
   expect(sum(1, 2)).toBe(3);
@@ -37,4 +38,12 @@ test('calculator', () => {
   expect(() => {
     calculator.divide(5, 0);
   }).toThrow();
+});
+
+test('caesar cipher', () => {
+  expect(caesarCipher('abc', 3)).toBe('def');
+  expect(caesarCipher('aBc', 3)).toBe('dEf');
+  expect(caesarCipher('xyZ', 3)).toBe('abC');
+  expect(caesarCipher('x.yZ', 3)).toBe('a.bC');
+  expect(caesarCipher('x.y!!Z', 3)).toBe('a.b!!C');
 });
