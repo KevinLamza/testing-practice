@@ -45,5 +45,5 @@ test('caesar cipher', () => {
   expect(caesarCipher('aBc', 3)).toBe('dEf');
   expect(caesarCipher('xyZ', 3)).toBe('abC');
   expect(caesarCipher('x.yZ', 3)).toBe('a.bC');
-  expect(caesarCipher('x.y!!Z', 3)).toBe('a.b!!C');
+  expect(caesarCipher('x.y!!Z', 10)).toBe('h.i!!J');
 });

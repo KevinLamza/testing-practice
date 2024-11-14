@@ -74,34 +74,40 @@ export function caesarCipher(string, number) {
     for (let i = 0; i < array.length; i++) {
       let character = array[i];
       if (character == character.toUpperCase()) {
-        if (character === 'X') {
-          character = 'A';
-        } else if (character === 'Y') {
-          character = 'B';
-        } else if (character === 'Z') {
-          character = 'C';
-        } else {
-          let index = upperAlphabet.findIndex(
-            (element) => element === character,
-          );
-          if (index != -1) {
-            character = upperAlphabet[index + 3];
+        // if (character === 'X') {
+        //   character = 'A';
+        // } else if (character === 'Y') {
+        //   character = 'B';
+        // } else if (character === 'Z') {
+        //   character = 'C';
+        // } else {
+        //   let index = upperAlphabet.findIndex(
+        //     (element) => element === character,
+        //   );
+        //   if (index != -1) {
+        //     character = upperAlphabet[index + 3];
+        //   }
+        // }
+        let oldIndex = upperAlphabet.findIndex(
+          (element) => element === character,
+        );
+        if (oldIndex != -1) {
+          let newIndex = oldIndex + number;
+          while (newIndex > upperAlphabet.length) {
+            newIndex = newIndex - upperAlphabet.length;
           }
+          character = upperAlphabet[newIndex];
         }
       } else if (character == character.toLowerCase()) {
-        if (character === 'x') {
-          character = 'a';
-        } else if (character === 'y') {
-          character = 'b';
-        } else if (character === 'z') {
-          character = 'c';
-        } else {
-          let index = lowerAlphabet.findIndex(
-            (element) => element === character,
-          );
-          if (index != -1) {
-            character = lowerAlphabet[index + 3];
+        let oldIndex = lowerAlphabet.findIndex(
+          (element) => element === character,
+        );
+        if (oldIndex != -1) {
+          let newIndex = oldIndex + number;
+          while (newIndex + 1 > lowerAlphabet.length) {
+            newIndex = newIndex - lowerAlphabet.length;
           }
+          character = lowerAlphabet[newIndex];
         }
       }
       cipheredString = cipheredString + character;
@@ -111,3 +117,5 @@ export function caesarCipher(string, number) {
     throw new Error('Invalid input');
   }
 }
+
+caesarCipher('xyZ', 3);
